@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import GameCard from '../components/GameCard';
+import Footer from '../components/Footer';
 import { games } from '../data/games';
 import './Home.css';
 
-const Home = ({ onGameSelect, searchTerm }) => {
+const Home = ({ onGameSelect, searchTerm, onAbout }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   // Filter games based on search term
@@ -21,15 +22,6 @@ const Home = ({ onGameSelect, searchTerm }) => {
 
   return (
     <div className="home">
-      {/* Hero Banner */}
-      <section className="hero-banner">
-        <div className="hero-content">
-          <h1 className="hero-title">BEST SELLERS</h1>
-          <p className="hero-subtitle">Discover the hottest games at unbeatable prices</p>
-        </div>
-        <div className="hero-gradient"></div>
-      </section>
-
       {/* Category Filter */}
       <section className="categories">
         <button 
@@ -86,6 +78,7 @@ const Home = ({ onGameSelect, searchTerm }) => {
           </div>
         )}
       </section>
+      <Footer onAbout={onAbout} />
     </div>
   );
 };

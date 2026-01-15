@@ -7,7 +7,7 @@
 
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #0a0a0f;
+  background-color: #1a0a2e;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,7 +27,7 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #0a0a0f;
+  background: #1a0a2e;
   color: white;
   overflow-x: hidden;
 }
@@ -62,7 +62,7 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: #1a0a2e;
 }
 
 ::-webkit-scrollbar-thumb {

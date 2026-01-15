@@ -5,7 +5,7 @@
 .hero-banner {
   position: relative;
   height: 300px;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(135deg, #2e1a4a 0%, #3e1663 50%, #4a1a72 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,7 +55,7 @@
   left: 0;
   right: 0;
   height: 100px;
-  background: linear-gradient(to bottom, transparent, #0a0a0f);
+  background: linear-gradient(to bottom, transparent, #1a0a2e);
 }
 
 .categories {
@@ -86,7 +86,7 @@
 }
 
 .category-btn.active {
-  background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+  background: linear-gradient(135deg, #370372, #4505ac);
   border-color: transparent;
   color: white;
   box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);

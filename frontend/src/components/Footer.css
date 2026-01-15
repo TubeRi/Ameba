@@ -1,0 +1,82 @@
+.footer-section {
+  width: 100%;
+  background: linear-gradient(180deg, #1a0a2e 0%, #3e1663 60%, #a855f7 100%);
+  color: #fff;
+  padding: 2.5rem 0 1.5rem 0;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-contact h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.footer-contact p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-btn {
+  background: #4d08ce;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.footer-btn:hover {
+  background: rgb(89, 6, 167);
+  transform: translateY(-2px);
+}
+
+.footer-credits {
+  margin: 2.5rem 0 1.5rem 0;
+}
+.footer-credits h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+.footer-credits-btn {
+  background: #4f7cf7;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 auto;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.footer-credits-btn:hover {
+  background: #3556a3;
+  transform: translateY(-2px);
+}
+.footer-fox {
+  font-size: 1.5rem;
+}
+
+.footer-legal {
+  margin-top: 2rem;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+.footer-legal strong {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
