@@ -3,23 +3,24 @@ import "./About.css";
 
 const team = [
   { name: "Julius", role: "Fullstack" },
+  { name: "Could be you", role: "Apply NOW" },
+  { name: "Could be you", role: "Apply NOW" },
+  { name: "Could be you", role: "Apply NOW" },
 ];
 
 const sponsors = [
   { name: "Could be your sponsor", img: "https://cdn-icons-png.flaticon.com/512/1828/1828817.png", alt: "Sponsor" },
 ];
 
-const About = ({ onBack }) => (
+const About = () => (
   <div className="about-bg">
     <div className="about-container">
       <h1 className="about-title">About <span>AMEBA</span></h1>
       <p className="about-desc">
-        AMEBA is a cutting-edge platform that revolutionizes the way you connect, collaborate, and create. Our mission is to empower individuals and teams to unleash their full potential through innovative tools and a supportive community. Join us on this exciting journey and be a part of the future!
+        AMEBA is a platform for gamers around the globe to discover new games and buy them for the most affordable prices in the market
       </p>
       <h2 className="about-subtitle">Our team</h2>
-      <p className="about-team-desc">
-        Meet the passionate and talented individuals behind AMEBA. Our diverse team brings together a wealth of experience and expertise from various fields to deliver the best possible platform for our users.
-      </p>
+
       <div className="about-team-grid">
         {team.map((member, i) => (
           <div className="about-card" key={member.name}>
@@ -42,7 +43,6 @@ const About = ({ onBack }) => (
           </div>
         ))}
       </div>
-      <button className="about-back-btn" onClick={onBack}>Back</button>
     </div>
   </div>
 );

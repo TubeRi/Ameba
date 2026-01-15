@@ -45,13 +45,11 @@ function App() {
     <div className="app">
       <Header onSearch={handleSearch} onGameSelect={handleGameSelect} />
       <main className="main-content">
-        {showAbout ? (
-          <About onBack={handleBackHome} />
-        ) : notFound ? (
-          <NotFound onBackHome={handleBackHome} />
-        ) : (
+        {!notFound && !showAbout && (
           <Home onGameSelect={handleGameSelect} searchTerm={searchTerm} onAbout={handleAbout} />
         )}
+        {notFound && <NotFound onBackHome={handleBackHome} />}
+        {showAbout && <About onBack={handleBackHome} />}
       </main>
       {selectedGame && !notFound && !showAbout && (
         <GameDetail game={selectedGame} onClose={handleCloseDetail} />
