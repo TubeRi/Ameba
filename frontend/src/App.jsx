@@ -1,60 +1,68 @@
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import GameDetail from './components/GameDetail';
 import NotFound from './pages/NotFound';
 import About from './pages/About';
+import Cart from './components/Cart';
+import { CartProvider } from './context/CartContext';
 import './App.css';
 
-function App() {
-  const [selectedGame, setSelectedGame] = useState(null);
+function AppContent() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [notFound, setNotFound] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
-
-  const handleGameSelect = (game) => {
-    if (!game) {
-      setNotFound(true);
-    } else {
-      setSelectedGame(game);
-    }
-  };
-
-  const handleCloseDetail = () => {
-    setSelectedGame(null);
-  };
+  const [showCart, setShowCart] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
-  const handleBackHome = () => {
-    setNotFound(false);
-    setSelectedGame(null);
-    setSearchTerm('');
-    setShowAbout(false);
+  const handleGameSelect = (game) => {
+    if (!game) {
+      navigate('/not-found');
+    } else {
+      navigate(`/game/${game.id}`);
+    }
   };
 
   const handleAbout = () => {
-    setShowAbout(true);
-    setNotFound(false);
-    setSelectedGame(null);
+    navigate('/about');
   };
 
   return (
     <div className="app">
-      <Header onSearch={handleSearch} onGameSelect={handleGameSelect} />
+      <Header 
+        onSearch={handleSearch} 
+        onGameSelect={handleGameSelect}
+        onCartClick={() => setShowCart(!showCart)}
+        cartOpen={showCart}
+      />
       <main className="main-content">
-        {!notFound && !showAbout && (
-          <Home onGameSelect={handleGameSelect} searchTerm={searchTerm} onAbout={handleAbout} />
-        )}
-        {notFound && <NotFound onBackHome={handleBackHome} />}
-        {showAbout && <About onBack={handleBackHome} />}
+        <Routes>
+          <Route 
+            path="/" 
+            element={<Home onGameSelect={handleGameSelect} searchTerm={searchTerm} onAbout={handleAbout} />} 
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="/game/:id" element={<GameDetail />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
-      {selectedGame && !notFound && !showAbout && (
-        <GameDetail game={selectedGame} onClose={handleCloseDetail} />
-      )}
+      {showCart && <Cart onClose={() => setShowCart(false)} />}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <CartProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useCart } from '../context/CartContext';
 import './GameCard.css';
 
 const GameCard = ({ game, onClick }) => {
+  const { addToCart } = useCart();
   return (
     <div className="game-card" onClick={() => onClick(game)}>
       <div className="game-card-image-container">
@@ -26,7 +28,8 @@ const GameCard = ({ game, onClick }) => {
           <div className="card-actions">
             <button className="btn-add" onClick={(e) => {
               e.stopPropagation();
-              alert('Added to cart!');
+              addToCart(game);
+              alert(`${game.title} added to cart!`);
             }}>
               ADD
             </button>

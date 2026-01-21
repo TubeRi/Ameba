@@ -68,6 +68,11 @@
   font-weight: bold;
 }
 
+.cart-btn.active {
+  background: rgba(233, 69, 96, 0.2);
+  border-color: #e94560;
+}
+
 .nav {
   display: flex;
   gap: 2rem;

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import Fuse from 'fuse.js';
 import { games } from '../data/games';
 import './SearchBar.css';
 
@@ -7,6 +8,16 @@ const SearchBar = ({ onSearch, onGameSelect }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef(null);
+
+  // Initialize Fuse.js for fuzzy search
+  const fuse = useMemo(() => {
+    return new Fuse(games, {
+      keys: ['title', 'genre', 'platform', 'description'],
+      threshold: 0.4, // Fuzzy matching threshold (0-1, lower = stricter)
+      includeScore: true,
+      minMatchCharLength: 2,
+    });
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -24,12 +35,9 @@ const SearchBar = ({ onSearch, onGameSelect }) => {
     setSearchTerm(value);
     
     if (value.trim().length > 0) {
-      // Fast filtering with debounce effect
-      const filtered = games.filter(game =>
-        game.title.toLowerCase().includes(value.toLowerCase()) ||
-        game.genre.some(g => g.toLowerCase().includes(value.toLowerCase())) ||
-        game.platform.toLowerCase().includes(value.toLowerCase())
-      ).slice(0, 8); // Limit to 8 suggestions for performance
+      // Use fuzzy search with Fuse.js
+      const results = fuse.search(value).slice(0, 8); // Limit to 8 suggestions
+      const filtered = results.map(result => result.item);
       
       setSuggestions(filtered);
       setShowSuggestions(true);

@@ -1,13 +1,24 @@
 import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { games } from '../data/games';
+import { useCart } from '../context/CartContext';
 import './GameDetail.css';
 
-const GameDetail = ({ game, onClose }) => {
-  if (!game) return null;
+const GameDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+  
+  const game = games.find(g => g.id === parseInt(id));
+
+  if (!game) {
+    return null;
+  }
 
   return (
-    <div className="game-detail-overlay" onClick={onClose}>
+    <div className="game-detail-overlay" onClick={() => navigate(-1)}>
       <div className="game-detail-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="close-btn" onClick={onClose}>✕</button>
+        <button className="close-btn" onClick={() => navigate(-1)}>✕</button>
         
         <div className="game-detail-content">
           <div className="game-detail-header">
@@ -43,7 +54,13 @@ const GameDetail = ({ game, onClose }) => {
               </div>
               
               <div className="action-buttons">
-                <button className="btn-add-large">
+                <button 
+                  className="btn-add-large"
+                  onClick={() => {
+                    addToCart(game);
+                    alert(`${game.title} added to cart!`);
+                  }}
+                >
                   🛒 ADD TO CART
                 </button>
                 <button className="btn-buy-large">

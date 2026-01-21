@@ -1,8 +1,10 @@
 import React from 'react';
 import SearchBar from './SearchBar';
+import { useCart } from '../context/CartContext';
 import './Header.css';
 
-const Header = ({ onSearch, onGameSelect }) => {
+const Header = ({ onSearch, onGameSelect, onCartClick, cartOpen }) => {
+  const { getCartCount } = useCart();
   return (
     <header className="header">
       <div className="header-content">
@@ -15,9 +17,12 @@ const Header = ({ onSearch, onGameSelect }) => {
         
         <div className="header-actions">
           <button className="icon-btn">❤️</button>
-          <button className="icon-btn cart-btn">
+          <button 
+            className={`icon-btn cart-btn ${cartOpen ? 'active' : ''}`}
+            onClick={onCartClick}
+          >
             🛒
-            <span className="cart-count">0</span>
+            <span className="cart-count">{getCartCount()}</span>
           </button>
           <button className="user-btn">👤</button>
         </div>
