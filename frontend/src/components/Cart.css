@@ -22,7 +22,7 @@
 .cart-container {
   position: relative;
   width: 100%;
-  max-width: 450px;
+  max-width: 600px;
   height: 100vh;
   background-color: #1a1a2e;
   display: flex;
@@ -109,12 +109,15 @@
 
 .cart-item {
   display: flex;
-  gap: 12px;
-  padding: 12px;
+  gap: 20px;
+  padding: 20px 16px;
   background-color: #16213e;
-  border-radius: 8px;
-  border: 1px solid #0f3460;
+  border-radius: 12px;
+  border: 2px solid #0f3460;
   transition: border-color 0.3s;
+  font-size: 1.1rem;
+  align-items: stretch;
+  min-width: 0;
 }
 
 .cart-item:hover {
@@ -122,37 +125,41 @@
 }
 
 .cart-item-image {
-  width: 80px;
-  height: 100px;
+  width: 100px;
+  height: 120px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .cart-item-details {
-  flex: 1;
+  flex: 2 1 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .cart-item-details h3 {
-  margin: 0 0 4px 0;
-  font-size: 0.95rem;
+  margin: 0 0 6px 0;
+  font-size: 1.1rem;
   color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: 700;
 }
 
 .cart-item-platform {
   margin: 0;
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 1rem;
+  color: #b0b0b0;
 }
 
 .cart-item-price {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   color: #e94560;
   font-weight: bold;
 }
@@ -162,25 +169,30 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
+  gap: 10px;
+  font-size: 1.1rem;
+  min-width: 110px;
+  flex-shrink: 0;
 }
 
 .quantity-control {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   background-color: #0f3460;
-  border-radius: 4px;
-  padding: 4px 8px;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 1.15rem;
 }
 
 .qty-btn {
   background: none;
   border: none;
   color: #e94560;
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -192,25 +204,28 @@
 }
 
 .quantity {
-  width: 30px;
+  width: 40px;
   text-align: center;
   color: #fff;
   font-weight: bold;
+  font-size: 1.15rem;
 }
 
 .cart-item-subtotal {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: #fff;
   font-weight: bold;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .remove-btn {
   background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 4px;
+  padding: 8px;
   transition: opacity 0.3s;
 }
 

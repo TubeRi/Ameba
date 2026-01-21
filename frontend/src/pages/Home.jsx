@@ -1,61 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GameCard from '../components/GameCard';
 import Footer from '../components/Footer';
 import { games } from '../data/games';
 import './Home.css';
 
 const Home = ({ onGameSelect, searchTerm, onAbout }) => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
   // Filter games based on search term
-  const filteredGames = searchTerm 
+  const displayGames = searchTerm 
     ? games.filter(game =>
         game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         game.genre.some(g => g.toLowerCase().includes(searchTerm.toLowerCase()))
       )
     : games;
 
-  // Filter by category if needed
-  const displayGames = selectedCategory === 'all' 
-    ? filteredGames 
-    : filteredGames.filter(game => game.genre.includes(selectedCategory));
-
   return (
     <div className="home">
-      {/* Category Filter */}
-      <section className="categories">
-        <button 
-          className={`category-btn ${selectedCategory === 'all' ? 'active' : ''}`}
-          onClick={() => setSelectedCategory('all')}
-        >
-          All Games
-        </button>
-        <button 
-          className={`category-btn ${selectedCategory === 'Action' ? 'active' : ''}`}
-          onClick={() => setSelectedCategory('Action')}
-        >
-          Action
-        </button>
-        <button 
-          className={`category-btn ${selectedCategory === 'RPG' ? 'active' : ''}`}
-          onClick={() => setSelectedCategory('RPG')}
-        >
-          RPG
-        </button>
-        <button 
-          className={`category-btn ${selectedCategory === 'Adventure' ? 'active' : ''}`}
-          onClick={() => setSelectedCategory('Adventure')}
-        >
-          Adventure
-        </button>
-        <button 
-          className={`category-btn ${selectedCategory === 'Horror' ? 'active' : ''}`}
-          onClick={() => setSelectedCategory('Horror')}
-        >
-          Horror
-        </button>
-      </section>
-
       {/* Games Grid */}
       <section className="games-section">
         {searchTerm && (
