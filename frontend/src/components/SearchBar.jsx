@@ -12,8 +12,8 @@ const SearchBar = ({ onSearch, onGameSelect }) => {
   // Initialize Fuse.js for fuzzy search
   const fuse = useMemo(() => {
     return new Fuse(games, {
-      keys: ['title', 'genre', 'platform', 'description'],
-      threshold: 0.4, // Fuzzy matching threshold (0-1, lower = stricter)
+      keys: ['title'],
+      threshold: 0.8, // Stricter fuzzy matching
       includeScore: true,
       minMatchCharLength: 2,
     });

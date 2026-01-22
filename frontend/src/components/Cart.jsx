@@ -25,14 +25,18 @@ const Cart = ({ onClose }) => {
               {cart.map(item => (
                 <div key={item.id} className="cart-item">
                   <img src={item.image} alt={item.title} className="cart-item-image" />
-                  
                   <div className="cart-item-details">
                     <h3>{item.title}</h3>
                     <p className="cart-item-platform">{item.platform}</p>
-                    <p className="cart-item-price">€{item.price.toFixed(2)}</p>
                   </div>
-
-                  <div className="cart-item-controls">
+                  <button 
+                    className="remove-btn"
+                    onClick={() => removeFromCart(item.id)}
+                    title="Remove from cart"
+                  >
+                    ❌
+                  </button>
+                  <div className="cart-item-controls" style={{position: 'absolute', bottom: 18, left: 160, right: 24, width: 'calc(100% - 180px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end'}}>
                     <div className="quantity-control">
                       <button 
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -48,18 +52,10 @@ const Cart = ({ onClose }) => {
                         +
                       </button>
                     </div>
-                    <p className="cart-item-subtotal">
+                    <p className="cart-item-price" style={{marginTop: 8, fontWeight: 700, fontSize: '1.25rem', color: '#ff5e7e'}}>
                       €{(item.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
-
-                  <button 
-                    className="remove-btn"
-                    onClick={() => removeFromCart(item.id)}
-                    title="Remove from cart"
-                  >
-                    🗑️
-                  </button>
                 </div>
               ))}
             </div>

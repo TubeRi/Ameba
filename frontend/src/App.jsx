@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import About from './pages/About';
 import Cart from './components/Cart';
 import { CartProvider } from './context/CartContext';
+import Login from './pages/Login';
 import './App.css';
 
 function AppContent() {
@@ -33,12 +34,14 @@ function AppContent() {
 
   return (
     <div className="app">
-      <Header 
-        onSearch={handleSearch} 
-        onGameSelect={handleGameSelect}
-        onCartClick={() => setShowCart(!showCart)}
-        cartOpen={showCart}
-      />
+      {location.pathname !== '/login' && location.pathname !== '/about' && (
+        <Header 
+          onSearch={handleSearch} 
+          onGameSelect={handleGameSelect}
+          onCartClick={() => setShowCart(!showCart)}
+          cartOpen={showCart}
+        />
+      )}
       <main className="main-content">
         <Routes>
           <Route 
@@ -48,6 +51,7 @@ function AppContent() {
           <Route path="/about" element={<About />} />
           <Route path="/not-found" element={<NotFound />} />
           <Route path="/game/:id" element={<GameDetail />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
