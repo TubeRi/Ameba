@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS games_cache (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  provider VARCHAR(50) NOT NULL,
+  provider_game_id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  released DATE NULL,
+  rating DECIMAL(4,2) NULL,
+  image_url TEXT NULL,
+  raw_json JSON NULL,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uniq_provider_game (provider, provider_game_id)
+);
+
+CREATE TABLE IF NOT EXISTS search_cache (
+  query VARCHAR(255) PRIMARY KEY,
+  result_provider_game_ids JSON NOT NULL,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
